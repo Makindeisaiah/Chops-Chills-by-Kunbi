@@ -53,23 +53,8 @@ export const Hero: React.FC<HeroProps> = ({ onOrderClick, onBookEventClick }) =>
               className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-gray-950 leading-[1.15]"
             >
               Satisfy Your{' '}
-              <span className="relative inline-block">
-                <span className="bg-brand-gradient text-transparent bg-clip-text">
-                  Cravings!
-                </span>
-                <svg
-                  className="absolute -bottom-2 left-0 w-full h-3 text-[#e91e8c]/40"
-                  viewBox="0 0 100 12"
-                  preserveAspectRatio="none"
-                >
-                  <path
-                    d="M0,7 Q50,14 100,7"
-                    stroke="currentColor"
-                    strokeWidth="4"
-                    fill="none"
-                    strokeLinecap="round"
-                  />
-                </svg>
+              <span className="text-[#e91e8c]">
+                Cravings!
               </span>
             </motion.h1>
 
@@ -169,28 +154,6 @@ export const Hero: React.FC<HeroProps> = ({ onOrderClick, onBookEventClick }) =>
                     <h3 className="text-lg sm:text-xl font-bold leading-tight">
                       Crafted with Love in Mushin, Lagos
                     </h3>
-                  </div>
-                </div>
-
-                {/* Floating pill badge 1 */}
-                <div className="absolute -top-3 -right-2 sm:-top-4 sm:-right-4 bg-white/95 backdrop-blur-sm border border-purple-100 rounded-2xl p-3 shadow-lg flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-pink-100 text-[#e91e8c] flex items-center justify-center shrink-0">
-                    <Sparkles className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500 font-medium">Founder & Head Host</p>
-                    <p className="text-sm font-bold text-gray-900 font-script text-base">Kunbi</p>
-                  </div>
-                </div>
-
-                {/* Floating pill badge 2 */}
-                <div className="absolute -bottom-3 -left-2 sm:-bottom-4 sm:-left-4 bg-white/95 backdrop-blur-sm border border-pink-100 rounded-2xl p-3 shadow-lg flex items-center gap-3">
-                  <div className="w-9 h-9 rounded-xl bg-purple-100 text-[#6b2d8c] flex items-center justify-center shrink-0">
-                    <span className="text-sm font-extrabold">🍹</span>
-                  </div>
-                  <div>
-                    <p className="text-xs text-gray-500 font-medium">Cocktails • Chops • Events</p>
-                    <p className="text-xs font-bold text-[#6b2d8c]">0909 814 2912</p>
                   </div>
                 </div>
               </div>

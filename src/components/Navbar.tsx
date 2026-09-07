@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Phone, MessageCircle, Sparkles } from 'lucide-react';
 import { BUSINESS_CONTACT } from '../data/servicesData';
+import { BRAND_ASSETS } from '../data/brandAssets';
 
 interface NavbarProps {
   onNavigate: (sectionId: string) => void;
@@ -64,11 +65,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
         <a
           href="#hero"
           onClick={(e) => handleNavClick(e, 'hero')}
-          className="flex items-center gap-2 group text-left focus:outline-none focus:ring-2 focus:ring-pink-500 rounded-lg p-1"
+          className="flex items-center gap-2.5 group text-left focus:outline-none focus:ring-2 focus:ring-pink-500 rounded-lg p-1"
           aria-label="Chops & Chills by Kunbi Home"
         >
-          <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#e91e8c] to-[#6b2d8c] flex items-center justify-center text-white shadow-md shadow-pink-500/20 group-hover:scale-105 transition-transform duration-200">
-            <span className="font-script text-2xl font-bold leading-none select-none">C&C</span>
+          <div className="relative w-10 h-10 rounded-full overflow-hidden flex items-center justify-center shrink-0 shadow-md shadow-pink-500/20 group-hover:scale-105 transition-transform duration-200 bg-gradient-to-tr from-[#e91e8c] to-[#6b2d8c]">
+            <img
+              src={BRAND_ASSETS.logo}
+              alt="Chops & Chills Logo"
+              className="w-full h-full object-cover"
+              onError={(e) => {
+                e.currentTarget.style.display = 'none';
+              }}
+            />
+            <span className="font-script text-2xl font-bold leading-none select-none text-white absolute -z-10">C&C</span>
           </div>
           <div className="flex flex-col">
             <span className="font-script text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight leading-none group-hover:text-[#e91e8c] transition-colors">

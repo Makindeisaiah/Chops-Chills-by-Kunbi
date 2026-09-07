@@ -1,12 +1,15 @@
-import React from 'react';
-import { Award, Sparkles, Heart, CheckCircle, Calendar, GlassWater } from 'lucide-react';
+import React, { useState } from 'react';
+import { Sparkles, Heart, CheckCircle, Calendar, GlassWater } from 'lucide-react';
 import { motion } from 'motion/react';
+import { BRAND_ASSETS } from '../data/brandAssets';
 
 interface AboutSectionProps {
   onConnectClick: () => void;
 }
 
 export const AboutSection: React.FC<AboutSectionProps> = ({ onConnectClick }) => {
+  const [imgSrc, setImgSrc] = useState(BRAND_ASSETS.founderPhoto);
+
   return (
     <section id="about" className="py-20 bg-white relative overflow-hidden">
       {/* Subtle background glow */}
@@ -20,16 +23,17 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onConnectClick }) =>
           <div className="lg:col-span-5 relative">
             <div className="relative mx-auto max-w-md">
               
-              {/* Outer decorative border box */}
+              {/* Clean outer decorative frame */}
               <div className="relative rounded-3xl p-3 bg-gradient-to-tr from-[#e91e8c]/20 via-purple-100/30 to-[#6b2d8c]/20 border border-pink-200 shadow-xl">
                 <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-gray-100">
                   <img
-                    src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=900&q=80"
+                    src={imgSrc}
+                    onError={() => setImgSrc(BRAND_ASSETS.founderFallbackUrl)}
                     alt="Kunbi - Founder, Certified Mixologist & Event Coordinator at Chops and Chills"
                     className="w-full h-full object-cover object-top"
                     loading="lazy"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#6b2d8c]/80 via-transparent to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#6b2d8c]/85 via-transparent to-transparent pointer-events-none" />
 
                   <div className="absolute bottom-5 left-5 right-5 text-white">
                     <span className="font-script text-3xl font-bold text-pink-300">
@@ -39,23 +43,6 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onConnectClick }) =>
                       Founder, Certified Mixologist & Event Planner
                     </p>
                   </div>
-                </div>
-
-                {/* Floating Badge 1: Certification */}
-                <div className="absolute -bottom-4 -right-2 sm:-right-4 bg-white rounded-2xl p-3.5 shadow-lg border border-purple-100 flex items-center gap-3">
-                  <div className="w-10 h-10 rounded-xl bg-purple-100 text-[#6b2d8c] flex items-center justify-center shrink-0">
-                    <Award className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <p className="text-xs font-bold text-gray-900">Certified Mixologist</p>
-                    <p className="text-[11px] text-[#e91e8c] font-medium">Licensed Bar Crafter</p>
-                  </div>
-                </div>
-
-                {/* Floating Badge 2: Lagos Pride */}
-                <div className="absolute -top-3 -left-2 sm:-left-4 bg-white rounded-2xl px-3.5 py-2 shadow-lg border border-pink-100 flex items-center gap-2">
-                  <span className="text-base">🇳🇬</span>
-                  <p className="text-xs font-bold text-gray-800">Mushin, Lagos Pride</p>
                 </div>
               </div>
 

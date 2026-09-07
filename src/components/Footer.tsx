@@ -1,6 +1,7 @@
 import React from 'react';
 import { Phone, MessageCircle, Instagram, MapPin, ArrowUp, Heart } from 'lucide-react';
 import { BUSINESS_CONTACT } from '../data/servicesData';
+import { BRAND_ASSETS } from '../data/brandAssets';
 
 interface FooterProps {
   onNavigate: (sectionId: string) => void;
@@ -19,8 +20,16 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Col 1: Brand Info */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-full bg-gradient-to-tr from-[#e91e8c] to-[#6b2d8c] flex items-center justify-center text-white shadow-md">
-                <span className="font-script text-2xl font-bold leading-none select-none">C&C</span>
+              <div className="relative w-11 h-11 rounded-full overflow-hidden flex items-center justify-center shrink-0 shadow-md bg-gradient-to-tr from-[#e91e8c] to-[#6b2d8c]">
+                <img
+                  src={BRAND_ASSETS.logo}
+                  alt="Chops & Chills Logo"
+                  className="w-full h-full object-cover"
+                  onError={(e) => {
+                    e.currentTarget.style.display = 'none';
+                  }}
+                />
+                <span className="font-script text-2xl font-bold leading-none select-none text-white absolute -z-10">C&C</span>
               </div>
               <div>
                 <span className="font-script text-3xl font-bold text-white block leading-none">
