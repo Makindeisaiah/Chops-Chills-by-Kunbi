@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Sparkles, Heart, CheckCircle, Calendar, GlassWater, Camera, Upload } from 'lucide-react';
+import React, { useState } from 'react';
+import { Sparkles, Heart, CheckCircle, Calendar, GlassWater } from 'lucide-react';
 import { motion } from 'motion/react';
 import { BRAND_ASSETS } from '../data/brandAssets';
 
@@ -8,47 +8,7 @@ interface AboutSectionProps {
 }
 
 export const AboutSection: React.FC<AboutSectionProps> = ({ onConnectClick }) => {
-  const [candidateIndex, setCandidateIndex] = useState(0);
-  const [customPhoto, setCustomPhoto] = useState<string | null>(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('chops_founder_image');
-    }
-    return null;
-  });
-  const fileInputRef = useRef<HTMLInputElement>(null);
-
-  const candidates = [
-    ...BRAND_ASSETS.founderPhotoCandidates,
-    '/images/founder.svg',
-    BRAND_ASSETS.founderFallbackUrl,
-  ];
-
-  const handleImageError = () => {
-    if (candidateIndex < candidates.length - 1) {
-      setCandidateIndex((prev) => prev + 1);
-    }
-  };
-
-  const handleFileUpload = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const file = e.target.files?.[0];
-    if (file) {
-      const reader = new FileReader();
-      reader.onload = (event) => {
-        const result = event.target?.result as string;
-        if (result) {
-          setCustomPhoto(result);
-          try {
-            localStorage.setItem('chops_founder_image', result);
-          } catch {
-            // Storage quota handled
-          }
-        }
-      };
-      reader.readAsDataURL(file);
-    }
-  };
-
-  const displaySrc = customPhoto || candidates[candidateIndex];
+  const [imgSrc, setImgSrc] = useState(BRAND_ASSETS.founderPhoto);
 
   return (
     <section id="about" className="py-20 bg-white relative overflow-hidden">
@@ -64,18 +24,17 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onConnectClick }) =>
             <div className="relative mx-auto max-w-md">
               
               {/* Clean outer decorative frame */}
-              <div className="relative rounded-3xl p-3 bg-gradient-to-tr from-[#e91e8c]/20 via-purple-100/30 to-[#6b2d8c]/20 border border-pink-200 shadow-xl group">
+              <div className="relative rounded-3xl p-3 bg-gradient-to-tr from-[#e91e8c]/20 via-purple-100/30 to-[#6b2d8c]/20 border border-pink-200 shadow-xl">
                 <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-gray-100">
                   <img
-                    src={displaySrc}
-                    onError={handleImageError}
+                    src={imgSrc}
+                    onError={() => setImgSrc(BRAND_ASSETS.founderFallbackUrl)}
                     alt="Kunbi - Founder, Certified Mixologist & Event Coordinator at Chops and Chills"
                     className="w-full h-full object-cover object-top"
                     loading="lazy"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#6b2d8c]/85 via-transparent to-transparent pointer-events-none" />
 
-                  {/* Photo details overlay */}
                   <div className="absolute bottom-5 left-5 right-5 text-white">
                     <span className="font-script text-3xl font-bold text-pink-300">
                       Kunbi
@@ -83,26 +42,6 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onConnectClick }) =>
                     <p className="text-xs uppercase tracking-wider font-semibold text-gray-200 mt-0.5">
                       Founder, Certified Mixologist & Event Planner
                     </p>
-                  </div>
-
-                  {/* Instant photo selector button for client / preview */}
-                  <div className="absolute top-3 right-3">
-                    <input
-                      ref={fileInputRef}
-                      type="file"
-                      accept="image/*"
-                      onChange={handleFileUpload}
-                      className="hidden"
-                      id="founder-image-upload"
-                    />
-                    <label
-                      htmlFor="founder-image-upload"
-                      className="cursor-pointer inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-white/90 hover:bg-white text-gray-800 text-xs font-semibold shadow-md transition-all border border-pink-100 hover:border-pink-300 active:scale-95"
-                      title="Upload Kunbi's photo directly (IMG_3226.jpeg)"
-                    >
-                      <Camera className="w-3.5 h-3.5 text-[#e91e8c]" />
-                      <span>{customPhoto ? 'Change Photo' : 'Select Photo'}</span>
-                    </label>
                   </div>
                 </div>
               </div>
