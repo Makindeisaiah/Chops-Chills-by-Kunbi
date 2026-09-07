@@ -15,9 +15,16 @@ export const BRAND_ASSETS = {
   logoText: 'Chops & Chills',
   logoSubtext: 'by Kunbi',
 
-  // Founder photo (Default is /images/founder.svg or custom upload)
-  founderPhoto: '/images/founder.svg',
+  // Founder photo candidate paths
+  founderPhoto: '/founder/IMG_3226.jpeg',
+  founderPhotoCandidates: [
+    '/founder/IMG_3226.jpeg',
+    '/images/founder/IMG_3226.jpeg',
+    '/founder/IMG_3226.jpg',
+    '/images/founder.jpg',
+    '/images/founder.png',
+  ],
   
-  // High quality realistic fallback if needed
+  // Fallback if local file not yet copied
   founderFallbackUrl: 'https://images.unsplash.com/photo-1577219491135-ce391730fb2c?auto=format&fit=crop&w=900&q=80',
 };
