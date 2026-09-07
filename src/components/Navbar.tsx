@@ -68,26 +68,34 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           className="flex items-center gap-2.5 group text-left focus:outline-none focus:ring-2 focus:ring-pink-500 rounded-lg p-1"
           aria-label="Chops & Chills by Kunbi Home"
         >
-          <div className="relative w-10 h-10 rounded-full overflow-hidden flex items-center justify-center shrink-0 shadow-md shadow-pink-500/20 group-hover:scale-105 transition-transform duration-200 bg-gradient-to-tr from-[#e91e8c] to-[#6b2d8c]">
+          <div className="relative flex items-center">
             <img
               src={BRAND_ASSETS.logo}
-              alt="Chops & Chills Logo"
-              className="w-full h-full object-cover"
+              alt="Chops & Chills by Kunbi"
+              className="h-10 sm:h-12 w-auto max-w-[180px] sm:max-w-[230px] object-contain rounded-lg transition-transform group-hover:scale-105"
               onError={(e) => {
                 e.currentTarget.style.display = 'none';
+                const fallback = document.getElementById('navbar-text-fallback');
+                if (fallback) fallback.style.display = 'flex';
               }}
             />
-            <span className="font-script text-2xl font-bold leading-none select-none text-white absolute -z-10">C&C</span>
-          </div>
-          <div className="flex flex-col">
-            <span className="font-script text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight leading-none group-hover:text-[#e91e8c] transition-colors">
-              Chops & Chills
-            </span>
-            <span className="text-[11px] sm:text-xs uppercase tracking-widest font-semibold text-[#6b2d8c] flex items-center gap-1">
-              <span>by Kunbi</span>
-              <span className="w-1.5 h-1.5 rounded-full bg-[#e91e8c]"></span>
-              <span className="text-[10px] text-gray-500 font-normal normal-case">Lagos</span>
-            </span>
+            {/* Fallback mark in case image is missing */}
+            <div
+              id="navbar-text-fallback"
+              className="hidden items-center gap-2"
+            >
+              <div className="w-10 h-10 rounded-full bg-gradient-to-tr from-[#e91e8c] to-[#6b2d8c] flex items-center justify-center text-white shadow-md">
+                <span className="font-script text-2xl font-bold leading-none select-none">C&C</span>
+              </div>
+              <div className="flex flex-col">
+                <span className="font-script text-2xl sm:text-3xl font-bold text-gray-900 tracking-tight leading-none">
+                  Chops & Chills
+                </span>
+                <span className="text-[11px] sm:text-xs uppercase tracking-widest font-semibold text-[#6b2d8c]">
+                  by Kunbi
+                </span>
+              </div>
+            </div>
           </div>
         </a>
 

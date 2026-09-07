@@ -10,6 +10,10 @@ interface AboutSectionProps {
 export const AboutSection: React.FC<AboutSectionProps> = ({ onConnectClick }) => {
   const [imgSrc, setImgSrc] = useState(BRAND_ASSETS.founderPhoto);
 
+  React.useEffect(() => {
+    setImgSrc(BRAND_ASSETS.founderPhoto);
+  }, []);
+
   return (
     <section id="about" className="py-20 bg-white relative overflow-hidden">
       {/* Subtle background glow */}
@@ -25,15 +29,19 @@ export const AboutSection: React.FC<AboutSectionProps> = ({ onConnectClick }) =>
               
               {/* Clean outer decorative frame */}
               <div className="relative rounded-3xl p-3 bg-gradient-to-tr from-[#e91e8c]/20 via-purple-100/30 to-[#6b2d8c]/20 border border-pink-200 shadow-xl">
-                <div className="relative rounded-2xl overflow-hidden aspect-[4/5] bg-gray-100">
+                <div className="relative rounded-2xl overflow-hidden aspect-[3/4] bg-gray-100">
                   <img
                     src={imgSrc}
-                    onError={() => setImgSrc(BRAND_ASSETS.founderFallbackUrl)}
+                    onError={() => {
+                      if (imgSrc !== BRAND_ASSETS.founderFallbackUrl) {
+                        setImgSrc(BRAND_ASSETS.founderFallbackUrl);
+                      }
+                    }}
                     alt="Kunbi - Founder, Certified Mixologist & Event Coordinator at Chops and Chills"
                     className="w-full h-full object-cover object-top"
-                    loading="lazy"
+                    loading="eager"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#6b2d8c]/85 via-transparent to-transparent pointer-events-none" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent pointer-events-none" />
 
                   <div className="absolute bottom-5 left-5 right-5 text-white">
                     <span className="font-script text-3xl font-bold text-pink-300">

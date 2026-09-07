@@ -20,24 +20,15 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Col 1: Brand Info */}
           <div className="lg:col-span-5 space-y-4">
             <div className="flex items-center gap-3">
-              <div className="relative w-11 h-11 rounded-full overflow-hidden flex items-center justify-center shrink-0 shadow-md bg-gradient-to-tr from-[#e91e8c] to-[#6b2d8c]">
+              <div className="bg-white/95 rounded-xl p-1.5 inline-block shadow-sm">
                 <img
                   src={BRAND_ASSETS.logo}
-                  alt="Chops & Chills Logo"
-                  className="w-full h-full object-cover"
+                  alt="Chops & Chills by Kunbi"
+                  className="h-12 sm:h-14 w-auto max-w-[210px] object-contain"
                   onError={(e) => {
                     e.currentTarget.style.display = 'none';
                   }}
                 />
-                <span className="font-script text-2xl font-bold leading-none select-none text-white absolute -z-10">C&C</span>
-              </div>
-              <div>
-                <span className="font-script text-3xl font-bold text-white block leading-none">
-                  Chops & Chills
-                </span>
-                <span className="text-xs uppercase tracking-widest font-semibold text-pink-400">
-                  by Kunbi
-                </span>
               </div>
             </div>
 
