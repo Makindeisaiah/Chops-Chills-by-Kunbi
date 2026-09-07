@@ -1,0 +1,6 @@
+{
+  "name": "Chops & Chills by Kunbi",
+  "description": "A modern web portal for Chops & Chills by Kunbi — Lagos-based food, drinks, and certified mixology & event planning in Mushin, Lagos State.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
