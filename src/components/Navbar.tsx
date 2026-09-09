@@ -128,7 +128,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
             title="Call Kunbi"
           >
             <Phone className="w-3.5 h-3.5 text-[#e91e8c]" />
-            <span>08118292941</span>
+            <span>{BUSINESS_CONTACT.phone}</span>
           </a>
 
           <a
@@ -202,7 +202,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
                 className="w-full flex items-center justify-center gap-2 py-2.5 px-4 rounded-xl text-gray-800 bg-gray-100 hover:bg-gray-200 font-medium text-sm"
               >
                 <Phone className="w-4 h-4 text-[#e91e8c]" />
-                <span>Call Directly: 08118292941</span>
+                <span>Call Directly: {BUSINESS_CONTACT.phone}</span>
               </a>
             </div>
           </div>

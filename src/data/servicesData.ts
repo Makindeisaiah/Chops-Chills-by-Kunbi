@@ -1,7 +1,7 @@
 import { ServiceItem, GalleryItem, SocialLinks } from '../types';
 
 export const BUSINESS_CONTACT: SocialLinks = {
-  phone: '08118292941',
+  phone: '09033494100',
   whatsapp: '0909 814 2912',
   whatsappNumberDigits: '2349098142912',
   instagram: 'https://instagram.com/chops_chills_bykunbi',
